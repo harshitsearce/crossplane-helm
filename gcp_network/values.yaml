@@ -34,17 +34,31 @@ router:
     region: "us-west1"
     description: "test"
     #network: "projects/{{ $.Values.project_id}}/global/networks/{{ $.Values.env}}-vpc"
-
+    nats:
+      drainNatIps:
+      enableEndpointIndependentMapping:
+      icmpIdleTimeoutSec:
+      logConfig:
+           enable:
+           filter:
+      minPortsPerVm:
+      name:
+      natIpAllocateOption:
+      natIps:
+      sourceSubnetworkIpRangesToNat: "ALL_SUBNETWORKS_ALL_IP_RANGES" #"ALL_SUBNETWORKS_ALL_IP_RANGES" "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES" "LIST_OF_SUBNETWORKS"
+      subnetworks:
+          - name:
+            secondaryIpRangeNames:
+            sourceIpRangesToNat:
+      tcpEstablishedIdleTimeoutSec:
+      tcpTransitoryIdleTimeoutSec:
+      udpIdleTimeoutSec:
     bgp:
       advertiseMode: "CUSTOM"
       advertisedGroups: ["ALL_SUBNETS"]
       advertisedIpRanges:
-        - description: "test range"
-          range: "10.7.0.0/16"
-        - description: "test range2"
-          range: "10.8.0.0/16"
-         
-        
+         description: "test range"
+         range: "10.7.0.0/16"
       asn:
     bgpPeers:
       advertiseMode: 

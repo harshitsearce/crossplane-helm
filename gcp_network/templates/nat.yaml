@@ -9,6 +9,30 @@ spec:
     forProvider:
         region: {{ .Values.router.providerspec.region}}
         network: "projects/{{ $.Values.project_id}}/global/networks/{{ $.Values.env}}-vpc"
+        {{ if .Values.router.providerspec.nats}}
+        nats:
+        {{- range .Values.router.nats.name}}
+          - name:
+            drainNatIps:
+            enableEndpointIndependentMapping:
+            icmpIdleTimeoutSec:
+            logConfig:
+                enable:
+                filter:
+            minPortsPerVm:
+            
+            natIpAllocateOption:
+            natIps:
+            sourceSubnetworkIpRangesToNat: 
+            subnetworks:
+                - name:
+                  secondaryIpRangeNames:
+                  sourceIpRangesToNat:
+            tcpEstablishedIdleTimeoutSec:
+            tcpTransitoryIdleTimeoutSec:
+            udpIdleTimeoutSec:
+        {{- end}}
+        {{ end}}
         bgp:
             {{ if .Values.router.providerspec.bgp.advertiseMode}}
             advertiseMode: {{ $.Values.router.providerspec.bgp.advertiseMode}}
@@ -18,10 +42,8 @@ spec:
             {{ end}}
             {{ if .Values.router.providerspec.bgp.advertisedIpRanges}}
             advertisedIpRanges:
-            {{- range $.Values.router.providerspec.bgp.advertisedIpRanges.description}}
-              - range: {{ .range}}
-                description: {{ .}}
-            {{- end}}
+                - range: {{ .Values.router.providerspec.bgp.advertisedIpRanges.range}}
+                  description: {{ .Values.router.providerspec.bgp.advertisedIpRanges.description}}
             {{ end}}
             {{ if .Values.router.providerspec.bgp.asn}}
             asn: {{ $.Values.router.providerspec.bgp.asn}}
