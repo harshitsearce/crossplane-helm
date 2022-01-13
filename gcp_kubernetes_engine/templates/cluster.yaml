@@ -7,28 +7,49 @@ spec:
     deletionPolicy:
     forProvider:
         addonsConfig:
+        {{ if .Values.forProvider.addonsConfig.cloudRunConfig}}
             cloudRunConfig:
                 disabled:
                 loadBalancerType:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.configConnectorConfig}}
             configConnectorConfig:
                 enabled:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.dnsCacheConfig}}
             dnsCacheConfig:
                 enabled:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.gcePersistentDiskCSIDriverConfig}}
             gcePersistentDiskCSIDriverConfig:
                 enabled:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.horizontalPodAutoscaling}}
             horizontalPodAutoscaling:
                 disabled:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.httpLoadBalancing}}
             httpLoadBalancing:
                 disabled:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.kubernetesDashboard}}
             kubernetesDashboard:
                 disabled:
+        {{ end}}
+        {{ if .Values.forProvider.addonsConfig.networkPolicyConfig}}
             networkPolicyConfig:
                 disabled:
+        {{ end}}
+        {{ if .Values.forProvider.authenticatorGroupsConfig}}
         authenticatorGroupsConfig:
-            enabled:
+            enabled: 
             securityGroup:
+        {{ end}}
+        {{ if .Values.forProvider.autopilot}}
         autopilot:
             enabled:
+        {{ end}}
+        {{ if .Values.forProvider.autoscaling}}
         autoscaling:
             autoprovisioningLocations:
             autoprovisioningNodePoolDefaults:
@@ -52,9 +73,14 @@ spec:
                     maximum: 
                     minimum: 
                     resourceType:
+        {{ end}}
+        {{ if .Values.forProvider.binaryAuthorization}}
         binaryAuthorization:
                     enabled:
+        {{ end}}
+        {{ if .Values.forProvider.clusterIpv4Cidr}}
         clusterIpv4Cidr:
+        {{ end}}
         confidentialNodes:
                 enabled:
         databaseEncryption:
