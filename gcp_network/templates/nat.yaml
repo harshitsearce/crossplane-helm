@@ -12,25 +12,25 @@ spec:
         {{ if .Values.router.providerspec.nats}}
         nats:
         {{- range .Values.router.nats.name}}
-          - name:
-            drainNatIps:
-            enableEndpointIndependentMapping:
-            icmpIdleTimeoutSec:
+          - name: {{ .name}}
+            drainNatIps: {{ .drainNatIps}}
+            enableEndpointIndependentMapping: {{ .enableEndpointIndependentMapping}}
+            icmpIdleTimeoutSec: {{ .icmpIdleTimeoutSec}}
             logConfig:
-                enable:
-                filter:
-            minPortsPerVm:
-            
-            natIpAllocateOption:
-            natIps:
-            sourceSubnetworkIpRangesToNat: 
+                enable: {{ .enable}}
+                filter: {{ .filter}}
+            minPortsPerVm: {{ .minPortsPerVm}}
+            natIpAllocateOption: {{ .natIpAllocateOption}}
+            natIps: {{ .natIps}}
+            sourceSubnetworkIpRangesToNat: {{ .sourceSubnetworkIpRangesToNat}} 
             subnetworks:
-                - name:
-                  secondaryIpRangeNames:
-                  sourceIpRangesToNat:
-            tcpEstablishedIdleTimeoutSec:
-            tcpTransitoryIdleTimeoutSec:
-            udpIdleTimeoutSec:
+                {{- range .subnetworks.name}}
+                - name: {{ .name}}
+                  secondaryIpRangeNames: {{ .secondaryIpRangeNames}}
+                  sourceIpRangesToNat: {{ .sourceIpRangesToNat}}
+            tcpEstablishedIdleTimeoutSec: {{ .tcpEstablishedIdleTimeoutSec}}
+            tcpTransitoryIdleTimeoutSec: {{ .tcpTransitoryIdleTimeoutSec}}
+            udpIdleTimeoutSec: {{ .udpIdleTimeoutSec}}
         {{- end}}
         {{ end}}
         bgp:
