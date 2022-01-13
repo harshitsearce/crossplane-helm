@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: test
+data:
+    {{ if .Values.value_cm}}
+    value: {{ .Values.value_cm}}
+    {{ end}}
+    values: test2

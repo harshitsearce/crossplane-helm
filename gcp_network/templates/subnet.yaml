@@ -1,0 +1,23 @@
+{{- range .Values.subnet.regions }}
+
+apiVersion: compute.gcp.crossplane.io/v1beta1
+kind: Subnetwork
+metadata:
+  name: "subnet-{{ .region }}"
+spec:
+    deletionPolicy: {{ $.Values.subnet.deletion_policy}}
+    forProvider:
+        enableFlowLogs: {{ $.Values.subnet.providerspec.enableFlowLogs}}
+        ipCidrRange: {{ .ipaddress}}
+        network: "projects/{{ $.Values.project_id}}/global/networks/{{ $.Values.env}}-vpc"
+        region: {{ .region}}
+        {{- range .secondaryRanges }}
+        secondaryIpRanges:
+            - ipCidrRange: {{ .iprange}}
+              rangeName: {{ .name}}
+        {{- end}}
+        privateIpGoogleAccess: true
+    providerConfigRef:
+     name: {{ $.Values.vpc.providerConfigRef}}
+---
+{{- end }}

@@ -1,0 +1,30 @@
+apiVersion: compute.gcp.crossplane.io/v1alpha1
+kind: Router
+metadata:
+    name: "{{ .Values.env}}-router"
+    labels: 
+        chart: {{ include "gcp_network.fullname" . }}
+spec:
+    deletionPolicy: "delete"
+    forProvider:
+        region: {{ .Values.router.providerspec.region}}
+        network: "projects/{{ $.Values.project_id}}/global/networks/{{ $.Values.env}}-vpc"
+        bgp:
+            {{ if .Values.router.providerspec.bgp.advertiseMode}}
+            advertiseMode: {{ $.Values.router.providerspec.bgp.advertiseMode}}
+            {{ end}}
+            {{ if .Values.router.providerspec.bgp.advertisedGroups}}
+            advertisedGroups: {{ $.Values.router.providerspec.bgp.advertisedGroups}}
+            {{ end}}
+            {{ if .Values.router.providerspec.bgp.advertisedIpRanges}}
+            advertisedIpRanges:
+            {{- range $.Values.router.providerspec.bgp.advertisedIpRanges.description}}
+              - range: {{ .range}}
+                description: {{ .}}
+            {{- end}}
+            {{ end}}
+            {{ if .Values.router.providerspec.bgp.asn}}
+            asn: {{ $.Values.router.providerspec.bgp.asn}}
+            {{ end}}
+    providerConfigRef:
+        name: {{ .Values.providerConfigRef}}

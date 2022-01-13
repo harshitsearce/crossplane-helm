@@ -1,0 +1,14 @@
+apiVersion: compute.gcp.crossplane.io/v1beta1
+kind: Network
+metadata:
+  name: "{{ .Values.env}}-vpc"
+  labels:
+    chart: {{ include "gcp_network.fullname" . }}
+spec:
+  deletionPolicy: {{ .Values.vpc.deletion_policy}}
+  forProvider:
+    autoCreateSubnetworks: {{ .Values.vpc.providerspec.autoCreateSubnet}}
+    routingConfig:
+     routingMode: {{ .Values.vpc.providerspec.routingMode}}
+  providerConfigRef:
+     name: {{ .Values.vpc.providerConfigRef}}
