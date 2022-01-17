@@ -9,10 +9,25 @@ spec:
     forProvider:
         cidrBlock: {{ .Values.forProvider.cidrBlock}}
         region: {{ .Values.forProvider.region}}
+        {{ if .Values.forProvider.amazonProvidedIpv6CidrBlock}}
         amazonProvidedIpv6CidrBlock: {{ .Values.forProvider.amazonProvidedIpv6CidrBlock}}
-        enableDnsHostNames:
-        enableDnsSupport:
-        instanceTenancy:
-        ipv6CidrBlock:
-        ipv6Pool:
+        {{ end}}
+        {{ if .Values.forProvider.enableDnsHostNames}}
+        enableDnsHostNames: {{ .Values.forProvider.enableDnsHostNames}}
+        {{ end}}
+        {{ if .Values.forProvider.enableDnsSupport}}
+        enableDnsSupport: {{.Values.forProvider.enableDnsSupport}}
+        {{ end}}
+        {{ if .Values.forProvider.instanceTenancy}}
+        instanceTenancy: {{ .Values.forProvider.instanceTenancy}}
+        {{ end}}
+        {{ if .Values.forProvider.ipv6CidrBlock}}
+        ipv6CidrBlock: {{ .Values.forProvider.ipv6CidrBlock}}
+        {{ end}}
+        {{ if .Values.forProvider.ipv6Pool}}
+        ipv6Pool: {{ .Values.forProvider.ipv6Pool}}
+        {{ end}}
         tags:
+         - key: Name
+           value: "{{ .Values.env}}-vpc"
+        

@@ -10,3 +10,5 @@ forProvider:
   ipv6CidrBlock:
   ipv6Pool:
   tags:
+#    - key: 
+#      value: 

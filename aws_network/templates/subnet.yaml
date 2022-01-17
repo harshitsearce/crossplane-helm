@@ -1,0 +1,32 @@
+{{- range .Values.subnet.name }}
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+    name: "subnet-{{ .zone}}"
+spec:
+    providerRef:
+        name: {{ .Values.providerRef}}
+    deletionPolicy: Delete
+    {{ if .Ipv6oncreate}}
+    assignIpv6AddressOncreation: {{.Ipv6oncreate}}
+    {{ end}}
+    availabilityZone: {{ .zone}}
+    {{ if .availabilityZoneId}}
+    availabilityZoneId: {{ .availabilityZoneId}}
+    {{ end}}
+    cidrBlock: {{ .cidrBlock}}
+    {{ if .ipv6cidrBlock}}
+    ipv6cidrBlock: {{ .ipv6cidrBlock}}
+    {{ end}}
+    {{ if .mapPublicIPOnLaunch}}
+    mapPublicIPOnLaunch: {{ .mapPublicIPOnLaunch}}
+    {{ end}}
+    region: {{ $.Values.subnet.forProvider.region}}
+    tags: 
+        - key: Name
+          value: "subnet-{{ .zone}}"
+    vpcId: {{ $.Values.subnet.forProvider.vpcId}}
+    vpcIdSelector: 
+        matchControllerRef: {{ .Values.subnet.forProvider.matchControllerRef}}
+        matchLabels: {{ .Values.subnet.forProvider.matchLabels}}
+        
