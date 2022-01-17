@@ -83,10 +83,10 @@
                     startTime:
                 maintenanceExclusions:
                 recurringWindow:
-                recurrence:
-                window:
-                    endTime:
-                    startTime:
+                    recurrence:
+                    window:
+                        endTime:
+                        startTime:
         masterAuth:
             clientCertificateConfig:
                     issueClientCertificate:
@@ -104,41 +104,41 @@
                 disabled:
             enableIntraNodeVisibility:
             privateIpv6GoogleAccess:
-            networkPolicy:
+        networkPolicy:
                 enabled:
                 provider:
-            networkRef:
+        networkRef:
                     name:
-            networkSelector:
+        networkSelector:
                 matchControllerRef:
                 matchLabels:
-            notificationConfig: 
+        notificationConfig: 
                     pubsub: 
                         enabled:
                         topic:
-            privateClusterConfig:
+        privateClusterConfig:
                 enablePrivateEndpoint:
                 enablePrivateNodes:
                 masterGlobalAccessConfig: 
                     enabled:
                 masterIpv4CidrBlock:
-            releaseChannel:
+        releaseChannel:
                 channel:
-            resourceLabels:
-            resourceUsageExportConfig:
+        resourceLabels:
+        resourceUsageExportConfig:
                 bigqueryDestination:
                     datasetId:
                 consumptionMeteringConfig:
                 enableNetworkEgressMetering:
-            subnetwork:
-            subnetworkRef:
+        subnetwork:
+        subnetworkRef:
                 name:
-            subnetworkSelector:
+        subnetworkSelector:
                 matchControllerRef:
                 matchLabels:
-            verticalPodAutoscaling:
+        verticalPodAutoscaling:
                 enabled:
-            workloadIdentityConfig:
+        workloadIdentityConfig:
                 workloadPool:
     providerConfigRef:
         name:

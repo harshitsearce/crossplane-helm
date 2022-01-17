@@ -9,170 +9,258 @@ spec:
         addonsConfig:
         {{ if .Values.forProvider.addonsConfig.cloudRunConfig}}
             cloudRunConfig:
-                disabled:
-                loadBalancerType:
+                disabled: {{ .Values.forProvider.addonsConfig.cloudRunConfig.disabled}}
+                loadBalancerType: {{ .Values.forProvider.addonsConfig.cloudRunConfig.loadBalancerType}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.configConnectorConfig}}
             configConnectorConfig:
-                enabled:
+                enabled: {{ .Values.forProvider.addonsConfig.configConnectorConfig}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.dnsCacheConfig}}
             dnsCacheConfig:
-                enabled:
+                enabled: {{ .Values.forProvider.addonsConfig.dnsCacheConfig}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.gcePersistentDiskCSIDriverConfig}}
             gcePersistentDiskCSIDriverConfig:
-                enabled:
+                enabled: {{ .Values.forProvider.addonsConfig.gcePersistentDiskCSIDriverConfig}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.horizontalPodAutoscaling}}
             horizontalPodAutoscaling:
-                disabled:
+                disabled: {{ .Values.forProvider.addonsConfig.horizontalPodAutoscaling}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.httpLoadBalancing}}
             httpLoadBalancing:
-                disabled:
+                disabled:  {{ .Values.forProvider.addonsConfig.httpLoadBalancing}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.kubernetesDashboard}}
             kubernetesDashboard:
-                disabled:
+                disabled: {{ .Values.forProvider.addonsConfig.kubernetesDashboard}}
         {{ end}}
         {{ if .Values.forProvider.addonsConfig.networkPolicyConfig}}
             networkPolicyConfig:
-                disabled:
+                disabled: {{ .Values.forProvider.addonsConfig.networkPolicyConfig}}
         {{ end}}
         {{ if .Values.forProvider.authenticatorGroupsConfig}}
         authenticatorGroupsConfig:
-            enabled: 
-            securityGroup:
+            enabled:  {{ .Values.forProvider.authenticatorGroupsConfig.enabled}}
+            securityGroup: {{ .Values.forProvider.authenticatorGroupsConfig.securityGroup}}
         {{ end}}
         {{ if .Values.forProvider.autopilot}}
         autopilot:
-            enabled:
+            enabled: {{ .Values.forProvider.autopilot}}
         {{ end}}
         {{ if .Values.forProvider.autoscaling}}
         autoscaling:
-            autoprovisioningLocations:
-            autoprovisioningNodePoolDefaults:
-                bootDiskKmsKey:
-                diskSizeGb:
-                diskType:
+            autoprovisioningLocations: {{ .Values.forProvider.autoscaling.autoprovisioningLocations}}
+            autoprovisioningNodePoolDefaults: 
+                bootDiskKmsKey: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.bootDiskKmsKey}}
+                diskSizeGb: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.diskSizeGb}}
+                diskType: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.diskType}}
                 management:
-                    autoRepair:
-                    autoUpgrade:
-                minCpuPlatform:
-                oauthScopes:
-                serviceAccount:
-                shieldedInstanceConfig:
-                    enableIntegrityMonitoring:
-                    enableSecureBoot:
+                    autoRepair: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.management.autoRepair}}
+                    autoUpgrade: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.management.autoUpgrade}}
+                minCpuPlatform: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.minCpuPlatform}}
+                oauthScopes: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.oauthScopes}}
+                serviceAccount: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.serviceAccount}}
+                shieldedInstanceConfig: 
+                    enableIntegrityMonitoring: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.shieldedInstanceConfig.enableIntegrityMonitoring}}
+                    enableSecureBoot: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.shieldedInstanceConfig.enableSecureBoot}}
                 upgradeSettings:
-                    maxSurge:
-                    maxUnavailable:
-                enableNodeAutoprovisioning:
+                    maxSurge: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.upgradeSettings.maxSurge}}
+                    maxUnavailable: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.upgradeSettings.maxUnavailable}}
+                enableNodeAutoprovisioning: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.enableNodeAutoprovisioning}}
                 resourceLimits:
-                    maximum: 
-                    minimum: 
-                    resourceType:
+                    maximum: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.resourceLimits.maximum}}
+                    minimum: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.resourceLimits.minimum}}
+                    resourceType: {{ .Values.forProvider.autoscaling.autoprovisioningNodePoolDefaults.resourceLimits.resourceType}}
         {{ end}}
         {{ if .Values.forProvider.binaryAuthorization}}
         binaryAuthorization:
-                    enabled:
+                    enabled: {{ .Values.forProvider.binaryAuthorization}}
         {{ end}}
         {{ if .Values.forProvider.clusterIpv4Cidr}}
-        clusterIpv4Cidr:
+        clusterIpv4Cidr: {{ .Values.forProvider.clusterIpv4Cidr}}
         {{ end}}
+        {{ if .Values.forProvider.confidentialNodes}}
         confidentialNodes:
-                enabled:
+                enabled: {{ .Values.forProvider.confidentialNodes}}
+        {{ end}}
+        {{ if .Values.forProvider.databaseEncryption}}
         databaseEncryption:
-                keyname:
-                state:
+                keyname: {{ .Values.forProvider.databaseEncryption.keyname}}
+                state:  {{ .Values.forProvider.databaseEncryption.state}}
+        {{ end}}
+        {{ if .Values.forProvider.defaultMaxPodsConstraint}}
         defaultMaxPodsConstraint:
-                maxPodsPerNode:
-        description:
-        enableKubernetesAlpha:
-        enableTpu:
-        initialClusterVersion:
+                maxPodsPerNode: {{ .Values.forProvider.defaultMaxPodsConstraint}}
+        {{ end}}
+        {{ if .Values.forProvider.description}}
+        description: {{ .Values.forProvider.description}}
+        {{ end}}
+        {{ if .Values.forProvider.enableKubernetesAlpha}}
+        enableKubernetesAlpha: {{ .Values.forProvider.enableKubernetesAlpha}}
+        {{ end}}
+        {{ if .Values.forProvider.enableTpu}}
+        enableTpu: {{ .Values.forProvider.enableTpu}}
+        {{ end}}
+        {{ if .Values.forProvider.initialClusterVersion}}
+        initialClusterVersion: {{ .Values.forProvider.initialClusterVersion}}
+        {{ end}}
+        {{ if .Values.forProvider.ipAllocationPolicy}}
         ipAllocationPolicy:
-            clusterIpv4CidrBlock:
-            clusterSecondaryRangeName:
-            createSubnetwork:
-            nodeIpv4CidrBlock:
+            {{ if .Values.forProvider.ipAllocationPolicy.clusterIpv4CidrBlock}}
+            clusterIpv4CidrBlock: {{ .Values.forProvider.ipAllocationPolicy.clusterIpv4CidrBlock}}
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.clusterSecondaryRangeName}}
+            clusterSecondaryRangeName: {{ .Values.forProvider.ipAllocationPolicy.clusterSecondaryRangeName}}
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.createSubnetwork}}
+            createSubnetwork: {{ .Values.forProvider.ipAllocationPolicy.createSubnetwork}}
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.nodeIpv4CidrBlock}}
+            nodeIpv4CidrBlock: {{ .Values.forProvider.ipAllocationPolicy.nodeIpv4CidrBlock}}
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.servicesIpv4CidrBlock}}
             servicesIpv4CidrBlock:
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.servicesSecondaryRangeName}}
             servicesSecondaryRangeName:
-            subnetworkName:
-            tpuIpv4CidrBlock: 
-            useIPAliases:
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.subnetworkName}}
+            subnetworkName: {{.Values.forProvider.ipAllocationPolicy.subnetworkName}}
+            {{ end}}
+            {{if .Values.forProvider.ipAllocationPolicy.tpuIpv4CidrBlock}}
+            tpuIpv4CidrBlock:  {{.Values.forProvider.ipAllocationPolicy.tpuIpv4CidrBlock}}
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.useIPAliases}}
+            useIPAliases: {{.Values.forProvider.ipAllocationPolicy.useIPAliases}}
+            {{ end}}
+            {{ if .Values.forProvider.ipAllocationPolicy.useRoutes}}
             useRoutes:
+            {{ end}}
+        {{ end}}
+        {{ if .Values.forProvider.labelFingerprint}}
         labelFingerprint:
+        {{ end}}
+        {{ if .Values.forProvider.legacyAbac}}
         legacyAbac:
-            enabled:
-        location:
-        locations:
-        loggingService:
+            enabled: {{ .Values.forProvider.legacyAbac}}
+        {{ end}}
+        {{ if .Values.forProvider.location}}
+        location: {{ .Values.forProvider.location}}
+        {{ end}}
+        {{ if .Values.forProvider.locations}}
+        locations: {{ .Values.forProvider.locations}}
+        {{ end}}
+        {{ if .Values.forProvider.loggingService}}
+        loggingService: {{ .Values.forProvider.loggingService}}
+        {{ end}}
+        {{ if .Values.forProvider.maintenancePolicy}}
         maintenancePolicy:
             window:
                 dailyMaintenanceWindow:
-                    startTime:
-                maintenanceExclusions:
+                    startTime: {{ .Values.forProvider.maintenancePolicy.window.dailyMaintenanceWindow.startTime}}
+                maintenanceExclusions: {{ .Values.forProvider.maintenancePolicy.window.maintenanceExclusions}}
+                {{if .Values.forProvider.maintenancePolicy.window.recurringWindow}}
                 recurringWindow:
-                recurrence:
-                window:
-                    endTime:
-                    startTime:
+                    recurrence: {{ .Values.forProvider.maintenancePolicy.window.recurringWindow.recurrence}}
+                    window: 
+                        endTime: {{ .Values.forProvider.maintenancePolicy.window.recurringWindow.window.endTime}}
+                        startTime: {{ .Values.forProvider.maintenancePolicy.window.recurringWindow.window.startTime}}
+                {{ end}}
+        {{ end}}
+        {{ if .Values.forProvider.masterAuth}}
         masterAuth:
-            clientCertificateConfig:
-                    issueClientCertificate:
-            username:
+            clientCertificateConfig: 
+                    issueClientCertificate: {{ .Values.forProvider.masterAuth.clientCertificateConfig.issueClientCertificate}}
+            username: {{ .Values.forProvider.masterAuth.username}}
+        {{ end}}
+        {{ if .Values.forProvider.masterAuthorizedNetworksConfig}}
         masterAuthorizedNetworksConfig:
             cidrBlocks:
-                - cidrBlock:
-                  displayName:
-            enabled:
-        monitoringService:
-        network:
+            {{ -range .Values.forProvider.masterAuthorizedNetworksConfig.cidrBlocks.cidrBlock}}
+                - cidrBlock: {{ .}}
+                  displayName: {{ .displayName}}
+            {{ -end}}
+            enabled: {{ .Values.forProvider.masterAuthorizedNetworksConfig.enabled}}
+        {{ end}}
+        {{ if .Values.forProvider.monitoringService}}
+        monitoringService: {{ .Values.forProvider.monitoringService}}
+        {{ end}}
+        {{ if .Values.forProvider.network}}
+        network: {{.Values.forProvider.network}}
+        {{ end}}
+        {{ if .Values.forProvider.networkConfig}}
         networkConfig: 
-            datapathProvider:
+            datapathProvider: {{.Values.forProvider.networkConfig.datapathProvider}}
             defaultSnatStatus:
-                disabled:
-            enableIntraNodeVisibility:
-            privateIpv6GoogleAccess:
-            networkPolicy:
-                enabled:
-                provider:
-            networkRef:
-                    name:
-            networkSelector:
-                matchControllerRef:
-                matchLabels:
-            notificationConfig: 
+                disabled: {{.Values.forProvider.networkConfig.defaultSnatStatus}}
+            enableIntraNodeVisibility: {{ .Values.forProvider.networkConfig.enableIntraNodeVisibility}}
+            privateIpv6GoogleAccess: {{ .Values.forProvider.networkConfig.privateIpv6GoogleAccess}}
+        {{ end}}
+        {{ if .Values.forProvider.networkPolicy}}
+        networkPolicy:
+                enabled: {{ .Values.forProvider.networkPolicy.enabled}}
+                provider: {{ .Values.forProvider.networkPolicy.provider}}
+        {{ end}}
+        {{ if .Values.forProvider.networkRef}}
+        networkRef:
+                    name: {{.Values.forProvider.networkRef}}
+        {{ end}}
+        {{ if .Values.forProvider.networkSelector}}
+        networkSelector:
+                matchControllerRef: {{.Values.forProvider.networkSelector.matchControllerRef}}
+                matchLabels: {{ .Values.forProvider.networkSelector.matchLabels}}
+        {{ end}}
+        {{ if .Values.forProvider.notificationConfig}}
+        notificationConfig: 
                     pubsub: 
-                        enabled:
-                        topic:
-            privateClusterConfig:
-                enablePrivateEndpoint:
-                enablePrivateNodes:
+                        enabled: {{ .Values.forProvider.notificationConfig.pubsub.enabled}}
+                        topic: {{ .Values.forProvider.notificationConfig.pubsub.topic}}
+        {{ end}}
+        {{ if .Values.forProvider.privateClusterConfig}}
+        privateClusterConfig:
+                enablePrivateEndpoint: {{ .Values.forProvider.privateClusterConfig.enablePrivateEndpoint}}
+                enablePrivateNodes: {{ .Values.forProvider.privateClusterConfig.enablePrivateNodes}}
                 masterGlobalAccessConfig: 
-                    enabled:
-                masterIpv4CidrBlock:
-            releaseChannel:
+                    enabled: {{ .Values.forProvider.privateClusterConfig.masterGlobalAccessConfig.enabled}}
+                masterIpv4CidrBlock: {{ .Values.forProvider.privateClusterConfig.masterIpv4CidrBlock}}
+        {{ end}}
+        {{ if .Values.forProvider.releaseChannel}}
+        releaseChannel:
                 channel:
-            resourceLabels:
-            resourceUsageExportConfig:
-                bigqueryDestination:
-                    datasetId:
-                consumptionMeteringConfig:
-                enableNetworkEgressMetering:
-            subnetwork:
-            subnetworkRef:
-                name:
-            subnetworkSelector:
-                matchControllerRef:
-                matchLabels:
-            verticalPodAutoscaling:
-                enabled:
-            workloadIdentityConfig:
-                workloadPool:
+        {{ end}}
+        {{ if .Values.forProvider.resourceLabels}}
+        resourceLabels:
+        {{ end}}
+        {{ if .Values.forProvider.resourceUsageExportConfig}}
+        resourceUsageExportConfig:
+                bigqueryDestination: 
+                    datasetId: {{ .Values.forProvider.resourceUsageExportConfig.bigqueryDestination.datasetId}}
+                consumptionMeteringConfig: {{ .Values.forProvider.resourceUsageExportConfig.consumptionMeteringConfig}}
+                enableNetworkEgressMetering: {{ .Values.forProvider.resourceUsageExportConfig.enableNetworkEgressMetering}}
+        {{ end}}
+        {{ if .Values.forProvider.subnetwork}}
+        subnetwork:
+        {{ end}}
+        {{ if .Values.forProvider.subnetworkRef}}
+        subnetworkRef:
+                name: {{.Values.forProvider.subnetworkRef}}
+        {{ end}}
+        {{ if .Values.forProvider.subnetworkSelector}}
+        subnetworkSelector:
+                matchControllerRef: {{.Values.forProvider.subnetworkSelector.matchControllerRef}}
+                matchLabels: {{.Values.forProvider.subnetworkSelector.matchLabels}}
+        {{ end}}
+        {{ if .Values.forProvider.verticalPodAutoscaling}}
+        verticalPodAutoscaling:
+                enabled: {{ .Values.forProvider.verticalPodAutoscaling}}
+        {{ end}}
+        {{ if .Values.forProvider.workloadIdentityConfig}}
+        workloadIdentityConfig:
+                workloadPool: {{ .Values.forProvider.workloadIdentityConfig}}
+        {{ end}}
     providerConfigRef:
-        name:
+        name: {{ .Values.providerConfigRef.name}}
     providerRef:
-        name:
+        name: {{ .Values.providerRef.name}}
