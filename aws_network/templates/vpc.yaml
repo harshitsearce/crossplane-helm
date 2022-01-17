@@ -1,0 +1,18 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: VPC
+metadata:
+    name: "{{ .Values.env}}-vpc"
+spec:
+    providerRef:
+        name: {{ .Values.providerRef}}
+    deletionPolicy: Delete
+    forProvider:
+        cidrBlock: {{ .Values.forProvider.cidrBlock}}
+        region: {{ .Values.forProvider.region}}
+        amazonProvidedIpv6CidrBlock: {{ .Values.forProvider.amazonProvidedIpv6CidrBlock}}
+        enableDnsHostNames:
+        enableDnsSupport:
+        instanceTenancy:
+        ipv6CidrBlock:
+        ipv6Pool:
+        tags:

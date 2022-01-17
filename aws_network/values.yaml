@@ -1,0 +1,12 @@
+env:
+providerConfigRef:
+forProvider:
+  cidrBlock:
+  region:
+  amazonProvidedIpv6CidrBlock:
+  enableDnsHostNames:
+  enableDnsSupport:
+  instanceTenancy:
+  ipv6CidrBlock:
+  ipv6Pool:
+  tags:
